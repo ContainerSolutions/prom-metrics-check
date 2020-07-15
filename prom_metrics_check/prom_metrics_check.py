@@ -168,7 +168,11 @@ def request_get(url=None, token=None):
     request = urllib.request.Request(url)
     if token:
         request.add_header("Authorization", f"Bearer {token}")
-    conn = urllib.request.urlopen(request, timeout=5)
+    try:
+        conn = urllib.request.urlopen(request, timeout=5)
+    except urllib.error.URLError as e:
+        print(e.reason)
+        exit(1)
     return Response(conn)
 
 
