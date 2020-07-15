@@ -24,20 +24,20 @@ def main():
     parser = argparse.ArgumentParser(
         description='Command line tool for check metrics between grafana and prometheus instance.')
     parser.add_argument(
-        'grafana_url',
-        metavar='grafana-url',
+        '--grafana-url',
+        metavar='grafana_url',
         help=f'Set grafana url. Default value is {GRAFANA_DEFAULT_URL}',
         nargs='?',
         default=GRAFANA_URL)
     parser.add_argument(
-        'grafana_key',
-        metavar='grafana-key',
+        '--grafana-key',
+        metavar='grafana_key',
         help='Set grafana key to have API access.',
         nargs='?',
         default=GRAFANA_KEY)
     parser.add_argument(
-        'prometheus_url',
-        metavar='prometheus-url',
+        '--prometheus-url',
+        metavar='prometheus_url',
         help=f'Set prometheus url. Default value is {PROMETHEUS_DEFAULT_URL}',
         nargs='?',
         default=PROMETHEUS_URLS)
