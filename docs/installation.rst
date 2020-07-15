@@ -14,6 +14,13 @@ To install prom-metrics-check, run this command in your terminal:
 
     $ pip install prom-metrics-check
 
+or directly from repository:
+
+.. code-block:: console
+
+    $ pip install git+https://github.com/ContainerSolutions/prom-metrics-check.git
+
+
 This is the preferred method to install prom-metrics-check, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
