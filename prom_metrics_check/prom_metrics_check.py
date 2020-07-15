@@ -171,7 +171,7 @@ def request_get(url=None, token=None):
     try:
         conn = urllib.request.urlopen(request, timeout=5)
     except urllib.error.URLError as e:
-        print(e.reason)
+        print(f'{url}: {e.reason}')
         exit(1)
     return Response(conn)
 
