@@ -26,4 +26,5 @@ prom-metrics-check is command line tools which help checking metric between dash
 Features
 --------
 
-* TODO
+* Connect via API to Grafana and get all metrics which are use in any dashboards
+* Connect via API to Prometheus and check exist metrics
