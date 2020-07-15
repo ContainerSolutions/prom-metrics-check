@@ -19,19 +19,18 @@ test_requirements = [ ]
 setup(
     author="Container Solutions",
     author_email='cre@container-solutions.com',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 2 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="prom-metrics-check is command line tools which help checking metric between dashboards of grafana and prometheus metrics.",
+    description="prom-metrics-check is command line tools which help checking "
+                "metric between dashboards of grafana and prometheus metrics.",
     entry_points={
         'console_scripts': [
             'prom-metrics-check=prom_metrics_check.cli:main',

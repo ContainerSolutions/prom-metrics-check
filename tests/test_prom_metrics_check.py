@@ -15,9 +15,8 @@ def get_all_metrics(query=None):
 class BaseMessage:
 
     def error_msg(self, metrics, expected, query):
-        return f"\nQuery: {query}\n" \
-               f"Found: [{', '.join(metrics)}]\n" \
-               f"Expected: [{', '.join(expected)}]"
+        return "\nQuery: {qry}\nFound: [{met}]\nExpected: [{exp}]".format(
+            qry=query, met=', '.join(metrics), exp=', '.join(expected))
 
 
 class TestGeneralTokenize(unittest.TestCase, BaseMessage):
