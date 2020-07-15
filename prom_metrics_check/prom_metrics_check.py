@@ -1,5 +1,6 @@
 from io import BytesIO
-from tokenize import tokenize, NUMBER, STRING, NAME, ENCODING, ENDMARKER, NEWLINE
+from tokenize import tokenize, NUMBER, STRING, NAME, ENCODING, ENDMARKER, \
+    NEWLINE
 
 import json
 import logging
@@ -78,9 +79,9 @@ def tokenize_string(query):
     result, x = [], 0
     g = tokenize(BytesIO(query.encode('utf-8')).readline)
     for toknum, tokval, _a, _b, _c in g:
-        if not toknum in [ENCODING, ENDMARKER, NEWLINE]:
+        if toknum not in [ENCODING, ENDMARKER, NEWLINE]:
             result.append(Token(x, toknum, tokval))
-            x+=1
+            x += 1
     return result
 
 
@@ -97,7 +98,8 @@ def find_metrics(tokenized_query):
                 if temp:
                     metrics.append(temp)
                     temp = None
-        elif skip in ['{', '['] and (token.is_rightcurltbracket() or token.is_rightsquarebracket()):
+        elif skip in ['{', '['] and (
+                token.is_rightcurltbracket() or token.is_rightsquarebracket()):
             skip = False
             if temp:
                 metrics.append(temp)
@@ -121,9 +123,12 @@ def find_metrics(tokenized_query):
                 if token.get_next(tokenized_query).is_leftbracket():
                     heap.append(token)
                 elif token.get_next(tokenized_query).is_leftcurltbracket() or \
-                        token.get_next(tokenized_query).is_leftsquarebracket() or \
-                        token.get_next(tokenized_query).is_operation() or \
-                        token.get_next(tokenized_query).is_rightbracket():
+                        token.get_next(
+                            tokenized_query).is_leftsquarebracket() or \
+                        token.get_next(
+                            tokenized_query).is_operation() or \
+                        token.get_next(
+                            tokenized_query).is_rightbracket():
                     if temp:
                         temp += token.tokval
                         metrics.append(temp)
@@ -180,15 +185,18 @@ def check_exist_metrics(except_metrics=None, url=None):
     logger.info(f"Except metrics: {', '.join(except_metrics)}")
     exist_metrics = request_get(f'{url}/api/v1/label/__name__/values')
     if exist_metrics.ok:
-        logger.info(f"Exist metrics: {', '.join(list(set(exist_metrics.json()['data'])))}")
-        difference = set(except_metrics).difference(set(exist_metrics.json()['data']))
+        data = list(set(exist_metrics.json()['data']))
+        logger.info(f"Exist metrics: {', '.join(data)}")
+        difference = set(except_metrics).difference(
+            set(exist_metrics.json()['data']))
         return list(difference)
     raise ValueError
 
 
 def get_recursively(search_dict, field):
     """
-    Takes a dict with nested lists and dicts, and searches all dicts for a key of the field provided.
+    Takes a dict with nested lists and dicts, and searches all dicts
+    for a key of the field provided.
     """
     fields_found = []
 
