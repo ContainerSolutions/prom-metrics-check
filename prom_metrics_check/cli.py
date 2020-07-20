@@ -58,20 +58,4 @@ def main():
 
 
 if __name__ == '__main__':
-    """
-    To use this script locally you need create port-forward to your grafana
-    and prometheus services.
-    $ kubectl port-forward svc/grafana 3000:80 -n default
-    $ kubectl port-forward svc/prometheus-operated 9090:9090
-    -n cs-engineering-gitops
-
-    Also if you use API KEY for grafana you should set it in you environment.
-    $ export GRAFANA_KEY=...
-
-    Now you are ready, try run this script in your system python interpreter.
-    $ ./check_metrics.py
-
-    To see more argument run script with help flag.
-    $ ./check_metrics.py --help
-    """
     sys.exit(main())    # pragma: no cover

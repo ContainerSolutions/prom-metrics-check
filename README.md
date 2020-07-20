@@ -1,22 +1,23 @@
-.. highlight:: shell
+# prom-metrics-check
 
-============
-Installation
-============
+`prom-metrics-check` is command line tools which help checking metric between dashboards of grafana and prometheus metrics.
+
+* Free software: MIT license
+* Documentation: https://prom-metrics-check.readthedocs.io.
 
 
-Stable release
---------------
+## Features
 
-To install prom-metrics-check, run this command in your terminal:
+* Connect via API to Grafana and get all metrics which are use in any dashboards
+* Connect via API to Prometheus and check exist metrics
 
-.. code-block:: console
 
-    $ pip install prom-metrics-check
+## Installation
 
-or directly from repository:
+### Stable release
 
-.. code-block:: console
+To install prom-metrics-check, run this command directly from repository:
+
 
     $ pip install git+https://github.com/ContainerSolutions/prom-metrics-check.git
 
@@ -30,29 +31,48 @@ you through the process.
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
-From sources
-------------
+### From sources
 
 The sources for prom-metrics-check can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
-.. code-block:: console
 
     $ git clone git://github.com/ContainerSolutions/prom-metrics-check
 
 Or download the `tarball`_:
 
-.. code-block:: console
 
     $ curl -OJL https://github.com/ContainerSolutions/prom-metrics-check/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
-.. code-block:: console
 
     $ python setup.py install
 
-
 .. _Github repo: https://github.com/ContainerSolutions/prom-metrics-check
 .. _tarball: https://github.com/ContainerSolutions/prom-metrics-check/tarball/master
+
+
+## Usage
+
+To use this tool locally you need create port-forward to your grafana and prometheus services.
+
+
+    $ kubectl port-forward svc/grafana 3000:80
+    $ kubectl port-forward svc/prometheus 9090:9090
+
+Also if you use API KEY for grafana you should set it in you environment.
+
+
+    $ export GRAFANA_KEY=...
+
+Now you are ready, try run this script in your system python interpreter.
+
+
+    $ prom-metrics-check
+
+To see more argument run script with help flag.
+
+
+    $ prom-metrics-check --help
