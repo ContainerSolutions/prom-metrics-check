@@ -18,7 +18,8 @@ class Token:
         self.tokval = tokval
 
     def __repr__(self):
-        return f'Token({self.no}, {self.toknum}, "{self.tokval}")'
+        return 'Token({no}, {toknum}, "{tokval}")'.format(
+            no=self.no, toknum=self.toknum, tokval=self.tokval)
 
     def is_name(self):
         return self.toknum == NAME
@@ -172,21 +173,24 @@ class Response:
 def request_get(url=None, token=None):
     request = urllib.request.Request(url)
     if token:
-        request.add_header("Authorization", f"Bearer {token}")
+        request.add_header(
+            "Authorization", "Bearer {token}".format(token=token))
     try:
         conn = urllib.request.urlopen(request, timeout=5)
     except urllib.error.URLError as e:
-        print(f'{url}: {e.reason}')
+        print('{url}: {error}'.format(url=url, error=e.reason))
         exit(1)
     return Response(conn)
 
 
 def check_exist_metrics(except_metrics=None, url=None):
-    logger.info(f"Except metrics: {', '.join(except_metrics)}")
-    exist_metrics = request_get(f'{url}/api/v1/label/__name__/values')
+    logger.info("Except metrics: {metrics}".format(
+        metrics=', '.join(except_metrics)))
+    exist_metrics = request_get(
+        '{url}/api/v1/label/__name__/values'.format(url=url))
     if exist_metrics.ok:
         data = list(set(exist_metrics.json()['data']))
-        logger.info(f"Exist metrics: {', '.join(data)}")
+        logger.info("Exist metrics: {metrics}".format(metrics=', '.join(data)))
         difference = set(except_metrics).difference(
             set(exist_metrics.json()['data']))
         return list(difference)
@@ -231,11 +235,13 @@ def get_all_metrics(dashboards=None):
 
 def load_dashboard(url=None, key=None):
     dashboards, dashboards_name = [], []
-    search_dashboard = request_get(f'{url}/api/search', token=key)
+    search_dashboard = request_get(
+        '{url}/api/search'.format(url=url), token=key)
     if search_dashboard.ok:
         dashboards_name = [dash.get('uri') for dash in search_dashboard.json()]
     for name in dashboards_name:
-        dashboard = request_get(f'{url}/api/dashboards/{name}', token=key)
+        dashboard = request_get('{url}/api/dashboards/{name}'.format(
+            url=url, name=name), token=key)
         if dashboard.ok:
             dashboards.append(dashboard.json().get('dashboard', {}))
     return dashboards
