@@ -76,3 +76,32 @@ To see more argument run script with help flag.
 
 
     $ prom-metrics-check --help
+
+## Work with DOCKER
+
+### Build docker
+
+If you need build docker from scrath use command: `make docker-build`
+
+### Run docker
+
+To run this container you should use extra flag when you run docker image localy: `--net=host`.
+On make file we prepared extra command ro run your docker:
+
+If you download this repository and try run this container follow this command on linux:
+
+    ARGS="--grafana-url=http://localhost:3000 --prometheus-url=http://localhost:9090 --grafana-key=xyz=" make docker-run
+
+on MacOO you should update host:
+
+    ARGS="--grafana-url=http://host.docker.internal:3000 --prometheus-url=http://host.docker.internal:9090 --grafana-key=xyz=" make docker-run
+
+If you need run this docker from scratch you should different command.
+
+#### Linux
+
+    $ docker run --net=host --rm -e GRAFANA_URL=http://localhost:3000 -e PROMETHEUS_URLS=http://localhost:9090 -e GRAFANA_KEY=xyz cs:prom-metrics-check
+
+#### MacOS
+
+    $ docker run --net=host --rm -e GRAFANA_URL=http://host.docker.internal:3000 -e PROMETHEUS_URLS=http://host.docker.internal:9090 -e GRAFANA_KEY=xyz cs:prom-metrics-check
