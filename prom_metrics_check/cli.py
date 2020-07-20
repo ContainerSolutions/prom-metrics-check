@@ -31,7 +31,8 @@ def main():
     parser.add_argument(
         '--grafana-url',
         metavar='grafana_url',
-        help=f'Set grafana url. Default value is {GRAFANA_DEFAULT_URL}',
+        help='Set grafana url. Default value is {url}'.format(
+            url=GRAFANA_DEFAULT_URL),
         nargs='?',
         default=GRAFANA_URL)
     parser.add_argument(
@@ -43,7 +44,8 @@ def main():
     parser.add_argument(
         '--prometheus-url',
         metavar='prometheus_url',
-        help=f'Set prometheus url. Default value is {PROMETHEUS_DEFAULT_URL}',
+        help='Set prometheus url. Default value is {url}'.format(
+            url=PROMETHEUS_DEFAULT_URL),
         nargs='?',
         default=PROMETHEUS_URLS)
     args = parser.parse_args()
@@ -53,7 +55,8 @@ def main():
         missing_metrics = check_exist_metrics(except_metrics, url)
         if missing_metrics:
             logger.critical(
-                f" Metrics which don't exist: {', '.join(missing_metrics)}")
+                " Metrics which don't exist: {metrics}".format(
+                    metrics=', '.join(missing_metrics)))
     return 0
 
 
