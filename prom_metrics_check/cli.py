@@ -42,14 +42,14 @@ def main(args=None):
         nargs='?',
         default=GRAFANA_KEY)
     parser.add_argument(
-        '--prometheus-url',
-        metavar='prometheus_url',
+        '--prometheus-urls',
+        metavar='prometheus_urls',
         help='Set prometheus url. Default value is {url}'.format(
             url=PROMETHEUS_DEFAULT_URL),
-        nargs='?',
+        nargs='*',
         default=PROMETHEUS_URLS)
     args = parser.parse_args(args)
-    for url in args.prometheus_url:
+    for url in args.prometheus_urls:
         dashboards = load_dashboard(url=args.grafana_url, key=args.grafana_key)
         except_metrics = get_all_metrics(dashboards=dashboards)
         missing_metrics = check_exist_metrics(except_metrics, url)
