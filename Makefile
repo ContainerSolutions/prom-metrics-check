@@ -78,4 +78,4 @@ docker-build: Dockerfile ## Build docker image
 	touch docker-build
 
 docker-run: docker-build ## Run docker image with custom command
-	docker run --rm -it container-solutions/prom-metrics-check:latest ${ARGS}
+	docker run --net=host --rm -it container-solutions/prom-metrics-check:latest ${ARGS}
