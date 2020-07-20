@@ -1,4 +1,4 @@
-"""Console script for prom_metrics_check."""
+"""Console script for prom-metrics-check."""
 import os
 import sys
 import argparse
@@ -23,7 +23,7 @@ PROMETHEUS_URLS = os.environ.get(
     'PROMETHEUS_URLS', PROMETHEUS_DEFAULT_URL).split(',')
 
 
-def main():
+def main(args=None):
     """Console script for prom_metrics_check."""
     parser = argparse.ArgumentParser(
         description='Command line tool for check metrics between '
@@ -48,7 +48,7 @@ def main():
             url=PROMETHEUS_DEFAULT_URL),
         nargs='?',
         default=PROMETHEUS_URLS)
-    args = parser.parse_args()
+    args = parser.parse_args(args)
     for url in args.prometheus_url:
         dashboards = load_dashboard(url=args.grafana_url, key=args.grafana_key)
         except_metrics = get_all_metrics(dashboards=dashboards)

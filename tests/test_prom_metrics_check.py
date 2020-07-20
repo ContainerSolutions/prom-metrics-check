@@ -1,15 +1,22 @@
 #!/usr/bin/env python
 
 """Tests for `prom_metrics_check` package."""
-
 import unittest
 
-from prom_metrics_check import prom_metrics_check
+from prom_metrics_check import prom_metrics_check, cli
 
 
 def get_all_metrics(query=None):
     return prom_metrics_check.find_metrics(
         tokenized_query=prom_metrics_check.tokenize_string(query))
+
+
+class TestCLI(unittest.TestCase):
+
+    def test_check_main(self):
+        with self.assertRaises(SystemExit) as cm:
+            cli.main(args=['--help'])
+        self.assertEqual(cm.exception.code, 0)
 
 
 class BaseMessage:
