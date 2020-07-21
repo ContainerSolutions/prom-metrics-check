@@ -3,8 +3,8 @@
 `prom-metrics-check` is command line tools which help checking metric between dashboards of grafana and prometheus metrics.
 
 * Free software: MIT license
-* Documentation: https://prom-metrics-check.readthedocs.io.
-
+* Rspository: https://github.com/ContainerSolutions/prom-metrics-check/
+* DockerHub: containersol/prom-metrics-check:latest
 
 ## Features
 
@@ -24,23 +24,23 @@ To install prom-metrics-check, run this command directly from repository:
 
 This is the preferred method to install prom-metrics-check, as it will always install the most recent stable release.
 
-If you don't have `pip`_ installed, this `Python installation guide`_ can guide
+If you don't have [pip] installed, this [Python installation guide] can guide
 you through the process.
 
-.. _pip: https://pip.pypa.io
-.. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
+[pip]: https://pip.pypa.io
+[Python installation guide]: http://docs.python-guide.org/en/latest/starting/installation/
 
 
 ### From sources
 
-The sources for prom-metrics-check can be downloaded from the `Github repo`_.
+The sources for prom-metrics-check can be downloaded from the [Github repo].
 
 You can either clone the public repository:
 
 
     $ git clone git://github.com/ContainerSolutions/prom-metrics-check
 
-Or download the `tarball`_:
+Or download the [tarball]:
 
 
     $ curl -OJL https://github.com/ContainerSolutions/prom-metrics-check/tarball/master
@@ -50,8 +50,8 @@ Once you have a copy of the source, you can install it with:
 
     $ python setup.py install
 
-.. _Github repo: https://github.com/ContainerSolutions/prom-metrics-check
-.. _tarball: https://github.com/ContainerSolutions/prom-metrics-check/tarball/master
+[Github repo]: https://github.com/ContainerSolutions/prom-metrics-check
+[tarball]: https://github.com/ContainerSolutions/prom-metrics-check/tarball/master
 
 
 ## Usage
