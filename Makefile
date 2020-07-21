@@ -74,8 +74,8 @@ install: clean ## install the package to the active Python's site-packages
 	python setup.py install
 
 docker-build: Dockerfile ## Build docker image
-	docker build -t container-solutions/prom-metrics-check:latest .
+	docker build -t containersol/prom-metrics-check:latest .
 	touch docker-build
 
 docker-run: docker-build ## Run docker image with custom command
-	docker run --net=host --rm -it container-solutions/prom-metrics-check:latest ${ARGS}
+	docker run --net=host --rm -it containersol/prom-metrics-check:latest ${ARGS}

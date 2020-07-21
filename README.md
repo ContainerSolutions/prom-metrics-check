@@ -90,18 +90,18 @@ On make file we prepared extra command ro run your docker:
 
 If you download this repository and try run this container follow this command on linux:
 
-    ARGS="--grafana-url=http://localhost:3000 --prometheus-url=http://localhost:9090 --grafana-key=xyz=" make docker-run
+    ARGS="--grafana-url=http://localhost:3000 --prometheus-urls=http://localhost:9090 --grafana-key=xyz=" make docker-run
 
 on MacOO you should update host:
 
-    ARGS="--grafana-url=http://host.docker.internal:3000 --prometheus-url=http://host.docker.internal:9090 --grafana-key=xyz=" make docker-run
+    ARGS="--grafana-url=http://host.docker.internal:3000 --prometheus-urls=http://host.docker.internal:9090 --grafana-key=xyz=" make docker-run
 
 If you need run this docker from scratch you should different command.
 
 #### Linux
 
-    $ docker run --net=host --rm -e GRAFANA_URL=http://localhost:3000 -e PROMETHEUS_URLS=http://localhost:9090 -e GRAFANA_KEY=xyz cs:prom-metrics-check
+    $ docker run --net=host --rm -e GRAFANA_URL=http://localhost:3000 -e PROMETHEUS_URLS=http://localhost:9090 -e GRAFANA_KEY=xyz containersol/prom-metrics-check:latest
 
 #### MacOS
 
-    $ docker run --net=host --rm -e GRAFANA_URL=http://host.docker.internal:3000 -e PROMETHEUS_URLS=http://host.docker.internal:9090 -e GRAFANA_KEY=xyz cs:prom-metrics-check
+    $ docker run --net=host --rm -e GRAFANA_URL=http://host.docker.internal:3000 -e PROMETHEUS_URLS=http://host.docker.internal:9090 -e GRAFANA_KEY=xyz containersol/prom-metrics-check:latest
