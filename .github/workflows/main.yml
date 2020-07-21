@@ -1,0 +1,43 @@
+name: prom-metrics-check
+
+on:
+  push:
+    branches:
+    - "*"  # run for branches
+    tags:
+    - "*"  # run for tags
+  pull_request:
+
+jobs:
+
+  build:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements_dev.txt ]; then pip install -r requirements_dev.txt; fi
+
+    - name: Lint with flake8
+      run: |
+        make lint
+
+    - name: Test with pytest
+      run: |
+        make test
+
+    - name: Run Code Coverage
+      run: |
+        make coverage
