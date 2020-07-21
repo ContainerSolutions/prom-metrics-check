@@ -54,11 +54,12 @@ Ready to contribute? Here's how to set up `prom-metrics-check` for local develop
 
     $ git clone git@github.com:your_name_here/prom-metrics-check.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a virtual environment. You should use internal module `venv` which exist in python 3.
+This is how you set up your fork for local development::
 
 
-    $ mkvirtualenv prom_metrics_check
-    $ cd prom_metrics_check/
+    $ python -m venv prom_metrics_check
+    $ source prom_metrics_check/bin/activate
     $ python setup.py develop
 
 4. Create a branch for local development::
