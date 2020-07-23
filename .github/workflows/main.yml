@@ -49,4 +49,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: containersol/prom-metrics-check
         tag_with_ref: true
-        tags: ${{ GITHUB_SHA }}
+        tag_with_sha: true
