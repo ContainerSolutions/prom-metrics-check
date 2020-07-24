@@ -1,9 +1,9 @@
 # prom-metrics-check
 
-`prom-metrics-check` is command line tools which help checking metric between dashboards of grafana and prometheus metrics.
+`prom-metrics-check` is a command line tools which helps checking metrics between dashboards of grafana and prometheus metrics.
 
 * Free software: MIT license
-* Rspository: https://github.com/ContainerSolutions/prom-metrics-check/
+* Repository: https://github.com/ContainerSolutions/prom-metrics-check/
 * DockerHub: containersol/prom-metrics-check:latest
 
 ## Features
