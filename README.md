@@ -2,6 +2,10 @@
 
 `prom-metrics-check` is a command line tools which helps checking metrics between dashboards of grafana and prometheus metrics.
 
+If you download external dashboards to your grafana instance (eg. https://github.com/kubernetes-monitoring/kubernetes-mixin)
+you are not 100% sure that all queries used in dashboard work with your prometheus instance. This tool looking for in any
+dashboard all queries, then it extracts only metrics and check that all used metrics exist in your prometheus instance.
+
 * Free software: MIT license
 * Repository: https://github.com/ContainerSolutions/prom-metrics-check/
 * DockerHub: containersol/prom-metrics-check:latest
