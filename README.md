@@ -56,47 +56,48 @@ Once you have a copy of the source, you can install it with:
 
 ## Usage
 
-To use this tool locally you need create port-forward to your grafana and prometheus services.
+To use this tool locally, you will need to create port-forwards for your grafana and prometheus services.
 
 
     $ kubectl port-forward svc/grafana 3000:80
     $ kubectl port-forward svc/prometheus 9090:9090
 
-Also if you use API KEY for grafana you should set it in you environment.
+Also, if you use an API key for Grafana you should set it in you environment.
 
 
     $ export GRAFANA_KEY=...
 
-Now you are ready, try run this script in your system python interpreter.
+Now you should be able to run the following script:
 
 
     $ prom-metrics-check
 
-To see more argument run script with help flag.
+To see more arguments, run the script with the `--help` flag.
 
 
     $ prom-metrics-check --help
 
-## Work with DOCKER
+## Work with Docker
 
-### Build docker
+### Build Docker Image
 
-If you need build docker from scrath use command: `make docker-build`
+If you want to build the Docker image, run: `make docker-build`
 
-### Run docker
+### Run Docker
 
-To run this container you should use extra flag when you run docker image localy: `--net=host`.
-On make file we prepared extra command ro run your docker:
+To run this container locally, use the `--net=host` flag.
 
-If you download this repository and try run this container follow this command on linux:
+The Makefile can also help running Docker images.
+
+If you download this repository on Linux, you should be able to run the container with: 
 
     ARGS="--grafana-url=http://localhost:3000 --prometheus-urls=http://localhost:9090 --grafana-key=xyz=" make docker-run
 
-on MacOO you should update host:
+on MacOS the command is slightly differnt:
 
     ARGS="--grafana-url=http://host.docker.internal:3000 --prometheus-urls=http://host.docker.internal:9090 --grafana-key=xyz=" make docker-run
 
-If you need run this docker from scratch you should different command.
+If you need to run Docker from scratch you should use a different command.
 
 #### Linux
 
