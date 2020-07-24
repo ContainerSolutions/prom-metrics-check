@@ -43,6 +43,7 @@ jobs:
         make coverage
 
   publish:
+    needs: [build]
     name: Publish docker image
     runs-on: ubuntu-latest
     steps:
