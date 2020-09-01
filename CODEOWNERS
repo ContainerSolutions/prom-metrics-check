@@ -1,0 +1,16 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+#
+# A CODEOWNERS pattern follows the same rules used in
+# gitignore files. The pattern is followed by one or more
+# GitHub usernames or team names using the standard
+# @username or @org/team-name format. You can also refer to
+# a user by an email address that has been added to their
+# GitHub account, for example user@example.com
+
+
+# This owner is the default owner for everything in the
+# repo. Unless a later match takes precedence,
+# @ContainerSolutions/cre will be requested for review when
+# someone opens a pull request.
+*       @ContainerSolutions/cre
