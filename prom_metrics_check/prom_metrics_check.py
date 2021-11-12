@@ -234,13 +234,13 @@ def get_all_metrics(dashboards=None):
 
 
 def load_dashboard(url=None, key=None):
-    dashboards, dashboards_name = [], []
+    dashboards, dashboards_uid = [], []
     search_dashboard = request_get(
         '{url}/api/search'.format(url=url), token=key)
     if search_dashboard.ok:
-        dashboards_name = [dash.get('uri') for dash in search_dashboard.json()]
-    for name in dashboards_name:
-        dashboard = request_get('{url}/api/dashboards/{name}'.format(
+        dashboards_uid = [dash.get('uid') for dash in search_dashboard.json()]
+    for name in dashboards_uid:
+        dashboard = request_get('{url}/api/dashboards/uid/{name}'.format(
             url=url, name=name), token=key)
         if dashboard.ok:
             dashboards.append(dashboard.json().get('dashboard', {}))
