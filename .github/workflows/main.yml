@@ -58,8 +58,7 @@ jobs:
         images: |
           containersol/prom-metrics-check
         tags: |
-          type=ref,event=push tag
-          type=semver,pattern={{version}}
+          type=ref,event=tag
           type=sha
 
     - name: Set up Docker Buildx
